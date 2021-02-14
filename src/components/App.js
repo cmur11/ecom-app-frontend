@@ -1,10 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+import LoginForm from "./LoginForm"
+import RegisterForm from "./RegisterForm"
 
 function App() {
+  const [button,setButton] = useState("")
+
   return (
     <div className="App">
-      <header className="App-header">
+      <div className = "sidebar">
+     <LoginForm/>
+     {/* <RegisterForm/> */}
+  
+      </div>
+      
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -17,7 +26,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }
