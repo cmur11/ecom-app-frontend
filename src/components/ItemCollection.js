@@ -13,6 +13,7 @@ function ItemCollection({items}){
         <div id = "onetem">
       {indItem}
     </div>
+      
     //    "itemCollection"
     )
     

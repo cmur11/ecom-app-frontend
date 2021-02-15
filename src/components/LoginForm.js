@@ -1,15 +1,11 @@
 import { getSuggestedQuery } from "@testing-library/react";
 import React, {useState,useEffect} from "react";
 
-function LoginForm({renderMainMenu}){
+function LoginForm({renderMainMenu,loggedIn, setLoggedIn}){
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  const [loggedIn, setLoggedIn] = useState(true)
-  // console.log(password)
-
-// function renderMainMenu(username){
-//     console.log(username)
-// }
+  // const [loggedIn, setLoggedIn] = useState(false)
+ 
 
   function handleSubmit(e){
     e.preventDefault()
@@ -20,13 +16,15 @@ function LoginForm({renderMainMenu}){
     .then(users => getUser(users))
 
 
-    // function handleLogin(){
-    //   setLoggedIn(false)
+    // function handleSubmit(){
+    //   setLoggedIn(true)
+    //   renderMainMenu(user)
     // }
 
     function getUser(users){
         users.forEach(user => {
             if (user.email === username){
+                setLoggedIn(true)
                 renderMainMenu(user)
             }
             // else {
