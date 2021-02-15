@@ -4,7 +4,7 @@ import React, {useState,useEffect} from "react";
 function LoginForm({renderMainMenu}){
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  const [loggedIn, setLoggedIn] = useState(true)
+  const [loggedIn, setLoggedIn] = useState(false)
   // console.log(password)
 
 // function renderMainMenu(username){
@@ -38,14 +38,24 @@ function LoginForm({renderMainMenu}){
     }
 
   }
+  console.log(username)
     return(
+      <>
+    {  loggedIn ? 
 
+    <h1>Hello {username}!</h1> : 
+    
     <form onSubmit = {handleSubmit}className = "Login Form">
       <input onChange = {(e) => setUsername(e.target.value)} value = {username} type = "text" placeholder = "Email"/> <br></br>
       <input onChange = {(e) => (setPassword(e.target.value))} value = {password}type = "password" placeholder = "Password"/>
-      <button type= "submit"> Login </button>
-    </form>) 
+      <button onClick={() => setLoggedIn(true)} type= "submit"> Login </button>
+    </form>
+       }
+      </>
+    ) 
   
 
   }
   export default LoginForm
+
+
