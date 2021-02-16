@@ -1,7 +1,5 @@
 import React, {useState,useEffect} from "react"
-import RegisterForm from "./RegisterForm"
 import ItemCollection from "./ItemCollection"
-import LoginForm from "./LoginForm"
 import Categories from "./Categories"
 
 function ItemPage(){
@@ -20,33 +18,15 @@ function ItemPage(){
 
     function renderMainMenu(currentUser){
         console.log(currentUser)
-
     }
 
     const categoriedItems = items.filter(item => item.category.includes(category))
-console.log(categoriedItems)
 
-
-
-console.log(category)
     return (
-        <div className = "Item Container">
-            <div className="ItemCard">
-            <div className = "sidebar">
-              {/* <LoginForm renderMainMenu = {renderMainMenu} setLoggedIn = {setLoggedIn} loggedIn = {loggedIn}/> */}
-      
-            </div>
-            {/* //render categories */}
-             {/* <div className = "categories">
-                 <Categories items = {items} category = {category} setCategory = {setCategory}/>
-             </div> */}
-            <div className = "ItemColleciton">
-                <ItemCollection items = {categoriedItems}/>
-            </div>
-        </div>
-
-
-     </div>
+        <>
+        <Categories/>
+        <ItemCollection items={categoriedItems}/>
+        </>
     )
 }
 export default ItemPage;

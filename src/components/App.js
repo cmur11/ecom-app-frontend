@@ -13,6 +13,7 @@ function App() {
       <Header/>
       <Switch>
           <Route path="/login" component={LoginForm}/>
+          <Route path="/home" component={ItemPage}/>
       </Switch>
       </Router>
   );

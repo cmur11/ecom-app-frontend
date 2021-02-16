@@ -22,8 +22,6 @@ function Categories({items, category, setCategory}){
             <button onClick={handlePants}>Pants </button>
             <button onClick={handleShirts}>Shirts</button>
             <button onClick={handleShoes}>Shoes</button>
-            <button>View Cart</button>
-            <button>View Order History</button>
         </div>
     )
 }
