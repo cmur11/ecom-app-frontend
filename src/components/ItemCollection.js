@@ -10,7 +10,7 @@ function ItemCollection({items}){
       
 
     return(
-        <div id = "onetem">
+        <div id="onetem">
       {indItem}
     </div>
       

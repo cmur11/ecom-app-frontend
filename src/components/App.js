@@ -1,34 +1,26 @@
 import React, {useState} from "react";
 import ItemPage from "./ItemPage"
-function App() {
-  // const [button,setButton] = useState("")
+import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
+import LoginForm from "./LoginForm"
+import Header from "./Header"
 
-  //   function getUser(users){
-  //     users.forEach(user => {
-  //         if (user.email === username){
-  //             renderMainMenu(username)
-  //         }else if (user.email !=username){
-  //             alert('Please reenter your credentials, email account does not exist')
-  //         }
-  //     })
-        //}
-  
- 
+
+function App() {
 
 
   return (
-  <header className = "App Name">
-    <h1> Our App Name</h1>
+    <Router>
+      <Header/>
+      <Switch>
+          <Route path="/login" component={LoginForm}/>
+      </Switch>
+      </Router>
+  );
+}
 
-    <div className="App">
-      
-     <ItemPage />
-     {/* <RegisterForm/> */}
-  
-     </div>
-     </header>
-    
-      
+export default App;
+
+/* 
       /* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -43,7 +35,19 @@ function App() {
         Learn React
         </a>
       </header> */
-  );
-}
 
-export default App;
+      // const [button,setButton] = useState("") */}
+
+ //   function getUser(users){
+//     users.forEach(user => {
+//         if (user.email === username){
+//             renderMainMenu(username)
+//         }else if (user.email !=username){
+//             alert('Please reenter your credentials, email account does not exist')
+//         }
+//     })
+      //} */}
+
+      // <ItemPage />
+      // <ItemPage />
+      

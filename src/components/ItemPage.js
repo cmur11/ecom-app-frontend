@@ -33,8 +33,6 @@ console.log(category)
         <div className = "Item Container">
             <div className="ItemCard">
             <div className = "sidebar">
-            {loggedIn ? <Categories items = {items} category = {category} setCategory = {setCategory}/> : 
-            <LoginForm renderMainMenu = {renderMainMenu} setLoggedIn = {setLoggedIn} loggedIn = {loggedIn}/>}
               {/* <LoginForm renderMainMenu = {renderMainMenu} setLoggedIn = {setLoggedIn} loggedIn = {loggedIn}/> */}
       
             </div>
@@ -52,3 +50,6 @@ console.log(category)
     )
 }
 export default ItemPage;
+
+// {loggedIn ? <Categories items = {items} category = {category} setCategory = {setCategory}/> : 
+// <LoginForm renderMainMenu = {renderMainMenu} setLoggedIn = {setLoggedIn} loggedIn = {loggedIn}/>}

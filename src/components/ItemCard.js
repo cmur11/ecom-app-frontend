@@ -4,24 +4,12 @@ function ItemCard({item}){
  // console.log(item)
   return(
     // <Card>
-    <div className = "item" >
-      <div className="image">
-        <img src = {item.image}  width="150" height="200"alt="item image!" />
-      </div>
-      <div className="content">
-        <div className="header">{item.name}</div>
-      </div>
-      <div className="extra content">
-        <span>
-          <i className="item price" />
-          {item.price}
-        </span><br></br>
-        <span>
-          <i className="item brand" />
-          {item.brand}
-        </span>
-      </div>
-      <button> Add to Cart</button>
+    <div className="item" >
+        <img src={item.image}  width="150" height="200" alt={item.name}/>
+          <h3>{item.brand}</h3>
+          <h3>{item.name}</h3>
+          <h3>${item.price}</h3>
+      <button>Add to Cart</button>
     </div>
 //   </Card>
   )

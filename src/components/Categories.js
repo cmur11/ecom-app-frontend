@@ -18,12 +18,12 @@ function Categories({items, category, setCategory}){
         // filterCategory("Shoes")
     }
     return(
-        <div>
-        <button onClick = {handlePants}>Pants </button>
-        <button onClick = {handleShirts}>Shirts</button>
-        <button onClick = {handleShoes}>Shoes</button>
-        <button> View Cart</button>
-        <button>View Order History</button>
+        <div id="category-buttons">
+            <button onClick={handlePants}>Pants </button>
+            <button onClick={handleShirts}>Shirts</button>
+            <button onClick={handleShoes}>Shoes</button>
+            <button>View Cart</button>
+            <button>View Order History</button>
         </div>
     )
 }
