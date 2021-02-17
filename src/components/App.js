@@ -7,6 +7,28 @@ import Cart from './Cart'
 
 
 function App() {
+  // came from ItemColection.js
+  const [orderId, setOrderId] = useState("")
+  const [newArr, setNewArr] = useState([])
+  
+  function handleOrders(orders){
+    console.log(orders)
+    const openOrder = orders.filter((order) => order.checked_out === false)
+    let addToOrder = parseInt(openOrder[0].id)
+    setOrderId(addToOrder)
+  }
+  console.log(orderId)
+
+
+  useEffect(()=> {
+    fetch('http://localhost:3000/orders')
+    .then(res => res.json())
+    .then((orders) => handleOrders(orders))
+  }, [])
+  /////////////////////////////// 
+
+
+
 //   const [user,setUser] = useState([])
   const [itemOrders, setItemOrders] = useState([]); 
 //   useEffect(()=> {
@@ -35,9 +57,44 @@ function removeItemFromCart(itemOrder){
 
 function checkOut(){
   // itemOrders.map((item) => )
-  console.log(itemOrders)
+
+  fetch(`http://localhost:3000/orders/${orderId}`, {
+    method: 'PATCH', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      checked_out: true
+    }
+    ),
+  })
+  .then(response => response.json())
+  .then(createNewOrder);
+  // (newOrder) => addToCart(newOrder)
+  // console.log(itemOrders)
   setItemOrders([])
 }
+
+function createNewOrder() {
+  fetch(`http://localhost:3000/orders`, {
+    method: 'POST', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      user_id: 1,
+      date: 2016,
+      checked_out: false
+    }
+    ),
+  })
+  .then(response => response.json())
+  .then(console.log());
+}
+
+
+
+// console.log(orderId)
   return (
     <Router>
       <Header />
@@ -45,7 +102,7 @@ function checkOut(){
       <Switch>
           <Route exact path="/login" component={LoginForm}/>
           <Route exact path="/home" >
-          <ItemPage addToCart = {addToCart}/>
+          <ItemPage addToCart = {addToCart} orderId={orderId}/>
           </Route>
           {/* <Route exact path="/carts"  render = {(props) => (
             <Cart {...props} itemOrders={itemOrders}/>
