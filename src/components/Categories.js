@@ -1,7 +1,8 @@
-import react, {useState} from "react"
-function Categories({items, category, setCategory}){
+import React, {useState} from "react"
+
+function Categories({ category, setCategory }) {
     // const [category, setCategory] = useState("")
-    // console.log(category)
+    //  console.log(category)
 
     function handlePants(){
         setCategory("Pants")
@@ -9,7 +10,7 @@ function Categories({items, category, setCategory}){
     }
 
     function handleShirts(){
-        setCategory("Shirts")
+        setCategory("Shirt")
         // filterCategory("Shirts")
     }
 
@@ -22,6 +23,7 @@ function Categories({items, category, setCategory}){
             <button onClick={handlePants}>Pants </button>
             <button onClick={handleShirts}>Shirts</button>
             <button onClick={handleShoes}>Shoes</button>
+            {/* <a>Order History</a> */}
         </div>
     )
 }

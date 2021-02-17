@@ -1,54 +1,34 @@
-import { getSuggestedQuery } from "@testing-library/react";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import '../components/css/login.css';
 
 
-function LoginForm({renderMainMenu,loggedIn, setLoggedIn}){
+function LoginForm(){
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  const [formH1, setFormH1] = useState(true)
-  // const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [user, setUser] = useState([])
  
 
+ 
   function handleSubmit(e){
     e.preventDefault()
-    // console.log("hi")
+    console.log(user)
   
     fetch('http://localhost:3000/users')
     .then(res => res.json())
-    .then(users => getUser(users))
-
-    // function handleSubmit(){
-    //   setLoggedIn(true)
-    //   renderMainMenu(user)
-    // }
-
-    function getUser(users){
-        users.forEach(user => {
-            if (user.email === username){
-                setLoggedIn(true)
-                renderMainMenu(user)
-            }
-            // else {
-            //     alert('Please reenter your credentials, email account does not exist')
-            //     LoginForm()
-            // }
-        })
-    }
-  }
-
-
-  function handleFormH1() {
-    setFormH1(!formH1)
-  }
+    .then(users => setUser(users[0]))
+    
+  }  
 
     return (
       <div className="login">
-        {formH1 ? <h1>Sign In</h1> : <h1>Sign Up</h1>}
-          <h4 onClick={handleFormH1}>New User? Click Me!</h4>
+        <h1>Sign In</h1>
         <form 
+          onSubmit={handleSubmit}
+          href="/home"
           className="login-form"
-          onSubmit={handleSubmit}>
+        >
             <input 
               type="text"
               value={username}
@@ -63,14 +43,15 @@ function LoginForm({renderMainMenu,loggedIn, setLoggedIn}){
               placeholder="Password" 
               onChange={(e) => (setPassword(e.target.value))} 
             />
-          <button 
-            type="submit"
-            class="login-button">Login</button>
+          <Link to="/home">
+            <button
+              type="submit"
+              className="login-button">Login</button>
+          </Link>
         </form>
     </div>
     ) 
+}
+
   
-
-  }
-  export default LoginForm
-
+  export default LoginForm;

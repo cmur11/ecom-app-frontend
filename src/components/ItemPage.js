@@ -1,35 +1,51 @@
-import React, {useState,useEffect} from "react"
+import React, {useState, useEffect} from "react"
 import ItemCollection from "./ItemCollection"
 import Categories from "./Categories"
+import Cart from "./Cart"
 
 function ItemPage(){
     const [items, setItems] = useState([])
     const [sidebar, setSidebar] = ['']
     const [category, setCategory] = useState("")
     const [loggedIn, setLoggedIn] = useState(false)
-
+    const [user, setUser] = useState(false)
+    // const [itemOrders, setItemOrders] = useState([]); 
+    
     useEffect(()=> {
         fetch('http://localhost:3000/items')
         .then(res => res.json())
         .then(setItems)
       }, [])
 
-      console.log(loggedIn)
+// console.log(user)
+      useEffect(()=> {
+        fetch('http://localhost:3000/users')
+        .then(res => res.json())
+        .then(users => setUser(users[0]))
+    }, [])
 
-    function renderMainMenu(currentUser){
-        console.log(currentUser)
-    }
+    // useEffect(()=> {
+    //     fetch('http://localhost:3000/item_orders')
+    //     .then(res => res.json())
+    //     .then(itemOrders => setItemOrders(itemOrders))
+    // }, [])
+ 
+    // console.log(itemOrders)
+
+    // function renderMainMenu(currentUser){
+    //     console.log(currentUser)
+    // }
 
     const categoriedItems = items.filter(item => item.category.includes(category))
-
+    console.log(categoriedItems)
     return (
         <>
-        <Categories/>
-        <ItemCollection items={categoriedItems}/>
+        <h1>Welcome {user.email}</h1>
+        <Categories category = {category} setCategory = {setCategory}/>
+        <ItemCollection items={categoriedItems} user = {user}/>
+        {/* <Cart itemOrders={itemOrders} /> */}
         </>
     )
 }
 export default ItemPage;
 
-// {loggedIn ? <Categories items = {items} category = {category} setCategory = {setCategory}/> : 
-// <LoginForm renderMainMenu = {renderMainMenu} setLoggedIn = {setLoggedIn} loggedIn = {loggedIn}/>}

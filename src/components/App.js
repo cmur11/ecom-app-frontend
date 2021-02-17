@@ -1,19 +1,36 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import ItemPage from "./ItemPage"
 import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
 import LoginForm from "./LoginForm"
-import Header from "./Header"
+import Header from "./NavBar"
+import Cart from './Cart'
 
 
 function App() {
+//   const [user,setUser] = useState([])
+  const [itemOrders, setItemOrders] = useState([]); 
+//   useEffect(()=> {
+//     fetch('http://localhost:3000/users')
+//     .then(res => res.json())
+//     .then(users => setUser(users[0]))
+// }, [])
 
+  useEffect(()=> {
+    fetch('http://localhost:3000/item_orders')
+    .then(res => res.json())
+    .then(itemOrders => setItemOrders(itemOrders))
+  }, [])
 
   return (
     <Router>
-      <Header/>
+      <Header />
+      {/* <h1> Welcome {user.email}</h1> */}
       <Switch>
-          <Route path="/login" component={LoginForm}/>
-          <Route path="/home" component={ItemPage}/>
+          <Route exact path="/login" component={LoginForm}/>
+          <Route exact path="/home" component={ItemPage} />
+          <Route exact path="/carts"  render = {(props) => (
+            <Cart {...props} itemOrders={itemOrders}/>
+          )}/>
       </Switch>
       </Router>
   );
