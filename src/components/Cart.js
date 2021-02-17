@@ -2,18 +2,18 @@ import React, {useState} from 'react';
 import CartItem from './CartItem'
 
 function Cart({ itemOrders }) {
-    
+  //  const [ordered, setOrdered] = useState(false)
     // let currentItemOrders = [];
     const itemArr = itemOrders.filter((itemOrder) => itemOrder.order.checked_out === false)
     const itemList = itemArr.map((item) => {
-        return <CartItem key={item.id} item={item.item}/>
+        return <CartItem key={item.id} itemOrder = {item} item={item.item} orderStatus = {item.order.checked_out} order = {item.order}/>
     }) 
     // function showCart() {
     //     currentItemOrders = itemOrders.filter((itemOrder) => itemOrder.order.checked_out === false)
     //     console.log(currentItemOrders)
     //     console.log(itemOrders)
     // }
-    console.log(itemList)
+    console.log(itemArr)
 
     // showCart()
 

@@ -1,7 +1,28 @@
 // import { Card } from "semantic-ui-react";
 
-function ItemCard({item}){
+function ItemCard({item,orderId}){
  // console.log(item)
+function handleAddToCart(){
+  // console.log(item.id)
+  // console.log(orderId)
+
+  fetch("http://localhost:3000/item_orders", {
+    method: 'POST', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      order_id: orderId,
+      item_id: item.id,
+    }
+    ),
+  })
+  .then(response => response.json())
+  .then(console.log);
+  
+
+}
+
   return(
     // <Card>
     <div className="item" >
@@ -9,7 +30,7 @@ function ItemCard({item}){
           <h3>{item.brand}</h3>
           <h3>{item.name}</h3>
           <h3>${item.price}</h3>
-      <button>Add to Cart</button>
+      <button onClick ={handleAddToCart}>Add to Cart</button>
     </div>
 //   </Card>
   )
