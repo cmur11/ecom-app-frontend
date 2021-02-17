@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import CartItem from './CartItem'
 
 function Cart({ itemOrders }) {
-  //  const [ordered, setOrdered] = useState(false)
+    // const [ordered, setOrdered] = useState(false)
     // let currentItemOrders = [];
     const itemArr = itemOrders.filter((itemOrder) => itemOrder.order.checked_out === false)
     const itemList = itemArr.map((item) => {

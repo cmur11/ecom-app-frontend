@@ -2,7 +2,8 @@ import ItemCard from "./ItemCard"
 import React, {useState,useEffect} from "react"
 function ItemCollection({items, user}){
     const [orderId, setOrderId] = useState("")
-
+    const [newArr, setNewArr] = useState([])
+    
     function handleOrders(orders){
       console.log(orders)
       const openOrder = orders.filter((order) => order.checked_out === false)

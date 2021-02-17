@@ -25,15 +25,15 @@ function CartItem({item,order,orderStatus, itemOrder}){
     console.log(checkedOut)
     // console.log(ordered)
 
-
+    // console.log(itemOrder)
 
     function handleRemove(){
       fetch(`http://localhost:3000/item_order/${itemOrder.id}` , {
         method: 'DELETE',
-      })
-      .then(res => res.json()) 
-      .then(console.log)
-    }
+      })}
+    //   .then(res => res.json()) 
+    //   .then(console.log)
+    // }
 
      return(
        // <Card>
