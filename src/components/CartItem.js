@@ -1,10 +1,11 @@
 // import { Card } from "semantic-ui-react";
 import React, {useState} from "react"
-function CartItem({item,order,orderStatus, itemOrder}){
+function CartItem({item,order,orderStatus, itemOrder, removeItemFromCart}){
    const [checkedOut, setCheckedOut] = useState(order.checked_out)
 
     function handleCheckout(){
-      setCheckedOut(!checkedOut)
+      // setCheckedOut(!checkedOut)
+      console.log(order)
 
       // fetch(`http://localhost:3001/order/${order.id}`, {
       //   method: 'PATCH',
@@ -26,13 +27,14 @@ function CartItem({item,order,orderStatus, itemOrder}){
     // console.log(ordered)
 
     // console.log(itemOrder)
-    // console.log(itemOrder.id)
+    //  console.log(itemOrder.id)
     function handleRemove(){
+
+        // console.log(itemOrder.id)}
       fetch(`http://localhost:3000/item_orders/${itemOrder.id}` , {
         method: 'DELETE',
       })
-      .then(res => res.json()) 
-      .then(console.log)
+    removeItemFromCart(itemOrder)
     }
 
      return(
@@ -42,7 +44,7 @@ function CartItem({item,order,orderStatus, itemOrder}){
              <h3>{item.brand}</h3>
              <h3>{item.name}</h3>
              <h3>${item.price}</h3>
-         <button onClick = {handleCheckout}>Checkout</button>
+         {/* <button onClick = {handleCheckout}>Checkout</button> */}
          <button onClick = {handleRemove}>Remove From Cart</button>
        </div>
    //   </Card>

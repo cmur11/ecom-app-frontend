@@ -1,6 +1,6 @@
 import ItemCard from "./ItemCard"
 import React, {useState,useEffect} from "react"
-function ItemCollection({items, user}){
+function ItemCollection({items, user, addToCart}){
     const [orderId, setOrderId] = useState("")
     const [newArr, setNewArr] = useState([])
     
@@ -22,7 +22,7 @@ function ItemCollection({items, user}){
 
     const indItem = items.map((item) => {
         return(
-          <ItemCard item = {item} user = {user} key = {item.id} orderId = {orderId}/>
+          <ItemCard item = {item} user = {user} key = {item.id} orderId = {orderId} addToCart = {addToCart}/>
         )
       })
       

@@ -1,19 +1,30 @@
 import React, {useState} from 'react';
 import CartItem from './CartItem'
 
-function Cart({ itemOrders }) {
+function Cart({ itemOrders, removeItemFromCart,checkOut}) {
+    // const [item, setItem]
     // const [ordered, setOrdered] = useState(false)
     // let currentItemOrders = [];
     const itemArr = itemOrders.filter((itemOrder) => itemOrder.order.checked_out === false)
+
     const itemList = itemArr.map((item) => {
-        return <CartItem key={item.id} itemOrder = {item} item={item.item} orderStatus = {item.order.checked_out} order = {item.order}/>
+        return <CartItem key={item.id} itemOrder = {item} item={item.item} orderStatus = {item.order.checked_out} order = {item.order} removeItemFromCart = {removeItemFromCart}/>
     }) 
     // function showCart() {
     //     currentItemOrders = itemOrders.filter((itemOrder) => itemOrder.order.checked_out === false)
     //     console.log(currentItemOrders)
     //     console.log(itemOrders)
     // }
-    console.log(itemArr)
+    console.log(itemArr[0]?.item.price)
+    // console.log(itemArr[0].item)
+    // itemArr.reduce(())
+
+    const totalCost = itemArr.reduce((a, b) => a + b.item.price, 0)
+    console.log(totalCost)
+    // console.log(itemArr[0]['item']['price'])
+    // const item = itemArr.map((item)=> {return {item.item})
+        // re
+   
 
     // showCart()
 
@@ -21,7 +32,9 @@ function Cart({ itemOrders }) {
     return (
         <div>
             <h1>Cart</h1>
+            <h4>Your car total is {totalCost}</h4>
             <ul>{itemList}</ul>
+            <button onClick = {checkOut}> CheckOut</button>
         </div>
     )
 }

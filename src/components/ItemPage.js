@@ -3,7 +3,7 @@ import ItemCollection from "./ItemCollection"
 import Categories from "./Categories"
 import Cart from "./Cart"
 
-function ItemPage(){
+function ItemPage({addToCart}){
     const [items, setItems] = useState([])
     const [sidebar, setSidebar] = ['']
     const [category, setCategory] = useState("")
@@ -42,7 +42,7 @@ function ItemPage(){
         <>
         <h1>Welcome {user.email}</h1>
         <Categories category = {category} setCategory = {setCategory}/>
-        <ItemCollection items={categoriedItems} user = {user}/>
+        <ItemCollection items={categoriedItems} user = {user} addToCart = {addToCart}/>
         {/* <Cart itemOrders={itemOrders} /> */}
         </>
     )

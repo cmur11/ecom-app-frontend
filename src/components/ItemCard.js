@@ -1,6 +1,6 @@
 // import { Card } from "semantic-ui-react";
 
-function ItemCard({item,orderId}){
+function ItemCard({item,orderId, addToCart}){
  // console.log(item)
 function handleAddToCart(){
   // console.log(item.id)
@@ -18,8 +18,8 @@ function handleAddToCart(){
     ),
   })
   .then(response => response.json())
-  .then(console.log);
-  
+  .then(newOrder => addToCart(newOrder));
+  // (newOrder) => addToCart(newOrder)
 
 }
 

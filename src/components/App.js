@@ -21,16 +21,39 @@ function App() {
     .then(itemOrders => setItemOrders(itemOrders))
   }, [])
 
+  function addToCart(newOrder){
+    console.log(newOrder)
+    const newArr = [...itemOrders,newOrder]
+    console.log(newArr)
+     setItemOrders(newArr)
+  }
+
+function removeItemFromCart(itemOrder){
+  const newArr = itemOrders.filter((item) => item !== itemOrder) 
+  setItemOrders(newArr)
+}
+
+function checkOut(){
+  // itemOrders.map((item) => )
+  console.log(itemOrders)
+  setItemOrders([])
+}
   return (
     <Router>
       <Header />
       {/* <h1> Welcome {user.email}</h1> */}
       <Switch>
           <Route exact path="/login" component={LoginForm}/>
-          <Route exact path="/home" component={ItemPage} />
-          <Route exact path="/carts"  render = {(props) => (
+          <Route exact path="/home" >
+          <ItemPage addToCart = {addToCart}/>
+          </Route>
+          {/* <Route exact path="/carts"  render = {(props) => (
             <Cart {...props} itemOrders={itemOrders}/>
-          )}/>
+          )}/> */}
+          <Route exact path="/carts" >
+          <Cart itemOrders={itemOrders} addToCart = {addToCart} removeItemFromCart = {removeItemFromCart}checkOut = {checkOut} />
+              {/* <button onClick = {checkOut}> CheckOut</button> */}
+          </Route>
       </Switch>
       </Router>
   );
