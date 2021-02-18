@@ -4,6 +4,7 @@ import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
 import LoginForm from "./LoginForm"
 import NavBar from "./NavBar"
 import Cart from './Cart'
+import '../App.css'
 
 
 function App() {

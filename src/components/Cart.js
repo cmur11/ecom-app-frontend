@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import CartItem from './CartItem'
-import { Card, Button, Container, Icon} from 'semantic-ui-react'
+import { Card, Button, Container, Icon, Header} from 'semantic-ui-react'
 
-function Cart({ itemOrders, removeItemFromCart,checkOut}) {
+function Cart({ itemOrders, removeItemFromCart, checkOut}) {
     // const [item, setItem]
     // const [ordered, setOrdered] = useState(false)
     // let currentItemOrders = [];
@@ -22,19 +22,22 @@ function Cart({ itemOrders, removeItemFromCart,checkOut}) {
 
     const totalCost = itemArr.reduce((a, b) => a + b.item.price, 0)
     console.log(totalCost)
+
+    const roundedTotalCost = (Math.round(totalCost * 100) / 100)
     // console.log(itemArr[0]['item']['price'])
     // const item = itemArr.map((item)=> {return {item.item})
         // re
    
-
     // showCart()
 
 
     return (
         <div>
             <Container textAlign='center'>
-                <h1>Cart</h1>
-                <h4>Your car total is {totalCost}</h4>
+            <Header as='h1' color="grey">Cart</Header>
+            <Header as='h3' color="grey">Your cart total is:  ${roundedTotalCost}</Header>
+                <br></br>
+                <br></br>
             <Button onClick={checkOut} animated>
             <Button.Content visible>Check Out</Button.Content>
             <Button.Content hidden>

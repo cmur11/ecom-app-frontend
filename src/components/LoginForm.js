@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import '../components/css/login.css';
+import { Header, Button, Icon } from 'semantic-ui-react'
 
 
 function LoginForm(){
@@ -23,7 +24,7 @@ function LoginForm(){
 
     return (
       <div className="login">
-        <h1>Sign In</h1>
+        <Header as='h1' color="grey">Sign In</Header>
         <form 
           onSubmit={handleSubmit}
           href="/home"
@@ -44,9 +45,15 @@ function LoginForm(){
               onChange={(e) => (setPassword(e.target.value))} 
             />
           <Link to="/home">
-            <button
-              type="submit"
-              className="login-button">Login</button>
+
+          <Button animated
+            type="submit"
+            className="login-button">
+              <Button.Content visible>Login</Button.Content>
+              <Button.Content hidden>
+              <Icon name='fire' />
+            </Button.Content>
+          </Button>
           </Link>
         </form>
     </div>

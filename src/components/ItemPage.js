@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react"
 import ItemCollection from "./ItemCollection"
 import Categories from "./Categories"
 import Cart from "./Cart" 
-import {Container} from 'semantic-ui-react'
+import {Container, Header} from 'semantic-ui-react'
 
 function ItemPage({addToCart, orderId}){
     const [items, setItems] = useState([])
@@ -42,7 +42,7 @@ function ItemPage({addToCart, orderId}){
     return (
         <>
         <Container textAlign='center'>
-            <h1>Clothzilla</h1>
+        <Header as='h1' color="grey" >Clothzilla</Header>
         </Container>
                 <Categories category = {category} setCategory = {setCategory}/>
                 <ItemCollection items={categoriedItems} orderId={orderId} user = {user} addToCart = {addToCart}/>

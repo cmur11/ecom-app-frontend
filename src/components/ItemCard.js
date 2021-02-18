@@ -1,4 +1,5 @@
 import { Card, Button, Icon,  Image} from 'semantic-ui-react'
+import '../App.css'
 
 function ItemCard({item,orderId, addToCart}){
  // console.log(item)
