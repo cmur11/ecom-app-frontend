@@ -1,5 +1,6 @@
 import ItemCard from "./ItemCard"
 import React, {useState,useEffect} from "react"
+import { Container, Card } from 'semantic-ui-react'
 function ItemCollection({items, user, addToCart, orderId}){
     // const [orderId, setOrderId] = useState("")
     // const [newArr, setNewArr] = useState([])
@@ -29,9 +30,12 @@ function ItemCollection({items, user, addToCart, orderId}){
       // console.log(user)
 
     return(
-        <div id="onetem">
-      {indItem}
-    </div>
+            <Container style={{padding: "20px"}}>
+              <Card.Group itemsPerRow={4} style={{padding: "20px"}}>
+              {indItem}
+              </Card.Group>
+            </Container>
+
     
       
     //    "itemCollection"

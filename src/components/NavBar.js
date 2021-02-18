@@ -1,42 +1,33 @@
 import { NavLink } from "react-router-dom"
 import '../components/css/navbar.css';
+import { Menu } from 'semantic-ui-react'
 
-const linkStyles = {
-    width: "100px",
-    padding: "12px",
-    margin: "0 6px 6px",
-    background: "red",
-    textDecoration: "none",
-    color: "white",
-}
+const square = { width: 175, height: 175 }
 
 function NavBar() {
 
     return (
-        
-<div className="navbar">
-            
-            <NavLink
-                to="/home"
-                exact
-                style={linkStyles}
-                activeStyle={{
-                    background: "black"
-                }}
-            >
-                Home
-            </NavLink>
-            <NavLink
-                to="/carts"
-                exact
-                style={linkStyles}
-                activeStyle={{
-                    background: "black"
-                }}
-            >
-                View Carts
-            </NavLink>
-        </div>
+        <>
+            <Menu>
+                <Menu.Item>
+                    <NavLink
+                        to="/home"
+                        exact
+                    >
+                        Home
+                    </NavLink>
+                </Menu.Item>
+
+                <Menu.Item>
+                    <NavLink
+                        to="/carts"
+                        exact
+                    >
+                        View Cart
+                    </NavLink>
+                </Menu.Item>
+            </Menu>
+        </>
     )
 }
 

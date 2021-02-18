@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import CartItem from './CartItem'
+import { Card, Button, Container, Icon} from 'semantic-ui-react'
 
 function Cart({ itemOrders, removeItemFromCart,checkOut}) {
     // const [item, setItem]
@@ -28,13 +29,24 @@ function Cart({ itemOrders, removeItemFromCart,checkOut}) {
 
     // showCart()
 
-    
+
     return (
         <div>
-            <h1>Cart</h1>
-            <h4>Your car total is {totalCost}</h4>
-            <ul>{itemList}</ul>
-            <button onClick = {checkOut}> CheckOut</button>
+            <Container textAlign='center'>
+                <h1>Cart</h1>
+                <h4>Your car total is {totalCost}</h4>
+            <Button onClick={checkOut} animated>
+            <Button.Content visible>Check Out</Button.Content>
+            <Button.Content hidden>
+            <Icon name='check circle' />
+            </Button.Content>
+            </Button>
+            </Container>
+            <Container style={{padding: "20px"}}>
+              <Card.Group itemsPerRow={4} style={{padding: "20px"}}>
+                {itemList}
+            </Card.Group>
+            </Container>
         </div>
     )
 }
@@ -46,5 +58,5 @@ export default Cart;
   <h3>{item.brand}</h3>
   <h3>{item.name}</h3>
   <h3>${item.price}</h3>
-<button>Add to Cart</button>
+<Button>Add to Cart</button>
 </div> */}

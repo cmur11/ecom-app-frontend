@@ -2,7 +2,7 @@ import React, {useState,useEffect} from "react";
 import ItemPage from "./ItemPage"
 import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
 import LoginForm from "./LoginForm"
-import Header from "./NavBar"
+import NavBar from "./NavBar"
 import Cart from './Cart'
 
 
@@ -97,7 +97,7 @@ function createNewOrder() {
 // console.log(orderId)
   return (
     <Router>
-      <Header />
+      <NavBar />
       {/* <h1> Welcome {user.email}</h1> */}
       <Switch>
           <Route exact path="/login" component={LoginForm}/>

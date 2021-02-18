@@ -1,4 +1,4 @@
-// import { Card } from "semantic-ui-react";
+import { Card, Button, Icon,  Image} from 'semantic-ui-react'
 
 function ItemCard({item,orderId, addToCart}){
  // console.log(item)
@@ -24,15 +24,25 @@ function handleAddToCart(){
 }
 
   return(
-    // <Card>
-    <div className="item" >
-        <img src={item.image}  width="150" height="200" alt={item.name}/>
-          <h3>{item.brand}</h3>
-          <h3>{item.name}</h3>
-          <h3>${item.price}</h3>
-      <button onClick ={handleAddToCart}>Add to Cart</button>
-    </div>
-//   </Card>
+      <Card>
+          <Card.Content>
+            <Image src={item.image} height='150' width='150' alt={item.name}/>
+            <br></br>
+            <br></br>
+            <Card.Header>{item.brand}</Card.Header>
+            <br></br>
+            <Card.Meta>{item.name}</Card.Meta>
+            <br></br>
+            <Card.Description>${item.price}</Card.Description>
+          </Card.Content>
+          
+          <Button onClick={handleAddToCart} animated>
+            <Button.Content visible>Add to Cart</Button.Content>
+            <Button.Content hidden>
+              <Icon name='plus cart' />
+            </Button.Content>
+          </Button>
+      </Card>
   )
 }
 

@@ -1,5 +1,7 @@
-// import { Card } from "semantic-ui-react";
 import React, {useState} from "react"
+import { Card, Button, Icon, Image } from 'semantic-ui-react'
+
+
 function CartItem({item,order,orderStatus, itemOrder, removeItemFromCart}){
    const [checkedOut, setCheckedOut] = useState(order.checked_out)
 
@@ -38,17 +40,38 @@ function CartItem({item,order,orderStatus, itemOrder, removeItemFromCart}){
     }
 
      return(
-       // <Card>
-       <div className="item" >
-           <img src={item.image}  width="150" height="200" alt={item.name}/>
-             <h3>{item.brand}</h3>
-             <h3>{item.name}</h3>
-             <h3>${item.price}</h3>
-         {/* <button onClick = {handleCheckout}>Checkout</button> */}
-         <button onClick = {handleRemove}>Remove From Cart</button>
-       </div>
-   //   </Card>
+      <Card>
+          <Card.Content>
+            <Image src={item.image} height='150' width='150' alt={item.name}/>
+            <br></br>
+            <br></br>
+            <Card.Header>{item.brand}</Card.Header>
+            <br></br>
+            <Card.Meta>{item.name}</Card.Meta>
+            <br></br>
+
+            <Card.Description>${item.price}</Card.Description>
+          </Card.Content>
+
+          <Button onClick={handleRemove} animated>
+            <Button.Content visible>Remove From Cart</Button.Content>
+            <Button.Content hidden>
+              <Icon name='cart arrow down' />
+            </Button.Content>
+          </Button>
+      </Card>
      )
    }
    
    export default CartItem;
+
+
+//    <Card>
+//    <Image src={item.image}  width="150" height="200" alt={item.name}/>
+//    <Card.Content>
+//      <Card.Header>{item.brand}</Card.Header>
+//      <Card.Meta>{item.name}</Card.Meta>
+//      <Card.Description>${item.price}</Card.Description>
+//          <Button content='Set focused' onClick={handleRemove}>Remove From Cart</Button>
+//    </Card.Content>
+// </Card>

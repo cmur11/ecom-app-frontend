@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react"
 import ItemCollection from "./ItemCollection"
 import Categories from "./Categories"
-import Cart from "./Cart"
+import Cart from "./Cart" 
+import {Container} from 'semantic-ui-react'
 
 function ItemPage({addToCart, orderId}){
     const [items, setItems] = useState([])
@@ -40,9 +41,11 @@ function ItemPage({addToCart, orderId}){
     console.log(categoriedItems)
     return (
         <>
-        <h1>Welcome {user.email}</h1>
-        <Categories category = {category} setCategory = {setCategory}/>
-        <ItemCollection items={categoriedItems} orderId={orderId} user = {user} addToCart = {addToCart}/>
+        <Container textAlign='center'>
+            <h1>Clothzilla</h1>
+        </Container>
+                <Categories category = {category} setCategory = {setCategory}/>
+                <ItemCollection items={categoriedItems} orderId={orderId} user = {user} addToCart = {addToCart}/>
         {/* <Cart itemOrders={itemOrders} /> */}
         </>
     )
