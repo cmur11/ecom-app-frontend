@@ -1,8 +1,11 @@
 import { useState } from "react";
+// import Layout from "./Layout.jsx"
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+// import {Elements} from '@stripe/react-stripe-js';
 // import { Card, Button, Container, Icon, Header} from 'semantic-ui-react'
 import styled from "@emotion/styled";
 import axios from "axios";
+
 
 import Row from "./prebuilt/Row";
 import BillingDetailsFields from "./prebuilt/BillingDetailsFields";
@@ -20,7 +23,7 @@ const CardElementContainer = styled.div`
 `;
 
 
-function Payment({checkOut}) {
+function Payment({checkOut, totalCost, itemArr}) {
     const [isProcessing, setProcessingTo] = useState(false);
     const [checkoutError, setCheckoutError] = useState();
   
@@ -30,7 +33,14 @@ function Payment({checkOut}) {
     // TIP
     // use the cardElements onChange prop to add a handler
     // for setting any errors:
+
+    console.log(itemArr)
   
+    const indItem = itemArr.map((item) => {
+        return (item.item.name + item.item.price )
+    }) 
+    console.log(indItem)
+
     const handleCardDetailsChange = ev => {
       ev.error ? setCheckoutError(ev.error.message) : setCheckoutError();
     };
@@ -55,7 +65,7 @@ function Payment({checkOut}) {
   
       try {
         const { data: clientSecret } = await axios.post("/api/payment_intents", {
-        //   amount: price * 100
+          amount: totalCost,
         });
   
         const paymentMethodReq = await stripe.createPaymentMethod({
@@ -70,7 +80,7 @@ function Payment({checkOut}) {
           return;
         }
   
-        const { error } = await stripe.confirmCardPayment(clientSecret, {
+        const { error } = await stripe.confirmCardPayment({
           payment_method: paymentMethodReq.paymentMethod.id
         });
   
@@ -123,6 +133,11 @@ function Payment({checkOut}) {
     };
   
     return (
+        <>
+        <div>
+        {indItem}
+        </div>
+
       <form onSubmit={handleFormSubmit}>
         <Row>
           <BillingDetailsFields />
@@ -139,11 +154,12 @@ function Payment({checkOut}) {
         <Row>
           {/* TIP always disable your submit button while processing payments */}
           <SubmitButton disabled={isProcessing || !stripe}>
-            {isProcessing ? "Processing..." : `Pay $`}
+            {isProcessing ? "Processing..." : `Pay $${totalCost}`}
             {/* `Pay $${price}` */}
           </SubmitButton>
         </Row>
       </form>
+      </>
     );
   };
 

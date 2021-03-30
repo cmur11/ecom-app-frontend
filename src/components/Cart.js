@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import CartItem from './CartItem'
 import { Card, Button, Container, Icon, Header} from 'semantic-ui-react'
 import Payment from "./Payment"
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
 
 function Cart({ itemOrders, removeItemFromCart, checkOut}) {
     const [pay,setPay] = useState(false)
@@ -15,11 +18,12 @@ function Cart({ itemOrders, removeItemFromCart, checkOut}) {
         }) 
       
        
-    
+    // console.log(itemArr)
         const totalCost = itemArr.reduce((a, b) => a + b.item.price, 0)
     
         const roundedTotalCost = (Math.round(totalCost * 100) / 100)
-       
+        const stripePromise = loadStripe('pk_test_51IaO1jGHXlKuOp6FfPCXYzUhqWF3xQAFL5WCdsfCM6wmwxUHhznNNXcUxqxs6OvYyUWiyHUyHlm0IV0OG1HQsHke00NnsUNTfD');
+
     
     // onClick={checkOut} 
         return (
@@ -43,7 +47,7 @@ function Cart({ itemOrders, removeItemFromCart, checkOut}) {
                 </Card.Group>
                 </Container>
                 </>
-                : <Payment checkout = {checkOut} />
+                :<Elements stripe={stripePromise}> <Payment totalCost = {totalCost} itemArr ={itemArr} checkout = {checkOut}/> </Elements>
             }
             </div>
         )
