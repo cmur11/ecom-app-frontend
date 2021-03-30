@@ -25,11 +25,7 @@ function CartItem({item,order,orderStatus, itemOrder, removeItemFromCart}){
       // })
       
     }
-    // console.log(checkedOut)
-    // console.log(ordered)
-
-    // console.log(itemOrder)
-    //  console.log(itemOrder.id)
+ 
     function handleRemove(){
 
         // console.log(itemOrder.id)}
@@ -66,12 +62,3 @@ function CartItem({item,order,orderStatus, itemOrder, removeItemFromCart}){
    export default CartItem;
 
 
-//    <Card>
-//    <Image src={item.image}  width="150" height="200" alt={item.name}/>
-//    <Card.Content>
-//      <Card.Header>{item.brand}</Card.Header>
-//      <Card.Meta>{item.name}</Card.Meta>
-//      <Card.Description>${item.price}</Card.Description>
-//          <Button content='Set focused' onClick={handleRemove}>Remove From Cart</Button>
-//    </Card.Content>
-// </Card>

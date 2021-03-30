@@ -3,55 +3,54 @@ import CartItem from './CartItem'
 import { Card, Button, Container, Icon, Header} from 'semantic-ui-react'
 
 function Cart({ itemOrders, removeItemFromCart, checkOut}) {
-    // const [item, setItem]
-    // const [ordered, setOrdered] = useState(false)
-    // let currentItemOrders = [];
-    const itemArr = itemOrders.filter((itemOrder) => itemOrder.order.checked_out === false)
+    const [pay,setPay] = useState(false)
+    console.log(itemOrders)
+    if (itemOrders){
+        // if {}
+        const itemArr = itemOrders.filter((itemOrder) => itemOrder.order.checked_out === false)
 
-    const itemList = itemArr.map((item) => {
-        return <CartItem key={item.id} itemOrder = {item} item={item.item} orderStatus = {item.order.checked_out} order = {item.order} removeItemFromCart = {removeItemFromCart}/>
-    }) 
-    // function showCart() {
-    //     currentItemOrders = itemOrders.filter((itemOrder) => itemOrder.order.checked_out === false)
-    //     console.log(currentItemOrders)
-    //     console.log(itemOrders)
-    // }
-    console.log(itemArr[0]?.item.price)
-    // console.log(itemArr[0].item)
-    // itemArr.reduce(())
+        const itemList = itemArr.map((item) => {
+            return <CartItem key={item.id} itemOrder = {item} item={item.item} orderStatus = {item.order.checked_out} order = {item.order} removeItemFromCart = {removeItemFromCart}/>
+        }) 
+      
+        // console.log(itemArr[0]?.item.price)
+       
+    
+        const totalCost = itemArr.reduce((a, b) => a + b.item.price, 0)
+    
+        const roundedTotalCost = (Math.round(totalCost * 100) / 100)
+       
+    
+    // onClick={checkOut} 
+        return (
+            <div>
+                <Container textAlign='center'>
+                <Header as='h1' color="grey">Cart</Header>
+                <Header as='h3' color="grey">Your cart total is:  ${roundedTotalCost}</Header>
+                    <br></br>
+                    <br></br>
+                <Button onClick={checkOut} animated>
+                <Button.Content visible>Check Out</Button.Content>
+                <Button.Content hidden>
+                <Icon name='check circle' />
+                </Button.Content>
+                </Button>
+                </Container>
+                <Container style={{padding: "20px"}}>
+                  <Card.Group itemsPerRow={4} style={{padding: "20px"}}>
+                    {itemList}
+                </Card.Group>
+                </Container>
+            </div>
+        )
+    }else {
+        return(
+            <div>
+                Loading...
+            </div>
+        )
+    }
 
-    const totalCost = itemArr.reduce((a, b) => a + b.item.price, 0)
-    console.log(totalCost)
-
-    const roundedTotalCost = (Math.round(totalCost * 100) / 100)
-    // console.log(itemArr[0]['item']['price'])
-    // const item = itemArr.map((item)=> {return {item.item})
-        // re
-   
-    // showCart()
-
-
-    return (
-        <div>
-            <Container textAlign='center'>
-            <Header as='h1' color="grey">Cart</Header>
-            <Header as='h3' color="grey">Your cart total is:  ${roundedTotalCost}</Header>
-                <br></br>
-                <br></br>
-            <Button onClick={checkOut} animated>
-            <Button.Content visible>Check Out</Button.Content>
-            <Button.Content hidden>
-            <Icon name='check circle' />
-            </Button.Content>
-            </Button>
-            </Container>
-            <Container style={{padding: "20px"}}>
-              <Card.Group itemsPerRow={4} style={{padding: "20px"}}>
-                {itemList}
-            </Card.Group>
-            </Container>
-        </div>
-    )
 }
 
 export default Cart;

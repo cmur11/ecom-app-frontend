@@ -3,9 +3,15 @@ import '../App.css'
 
 function ItemCard({item,orderId, addToCart}){
  // console.log(item)
+//  console.log(orderId)
+// debugger
 function handleAddToCart(){
   // console.log(item.id)
   // console.log(orderId)
+
+
+   
+ 
 
   fetch("http://localhost:3000/item_orders", {
     method: 'POST', // or 'PUT'
@@ -26,7 +32,7 @@ function handleAddToCart(){
 
   return(
       <Card>
-          <Card.Content>
+          <Card.Content >
             <Image src={item.image} height='150' width='150' alt={item.name}/>
             <br></br>
             <br></br>
