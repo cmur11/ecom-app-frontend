@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import CartItem from './CartItem'
 import { Card, Button, Container, Icon, Header} from 'semantic-ui-react'
+import Payment from "./Payment"
 
 function Cart({ itemOrders, removeItemFromCart, checkOut}) {
     const [pay,setPay] = useState(false)
@@ -13,7 +14,6 @@ function Cart({ itemOrders, removeItemFromCart, checkOut}) {
             return <CartItem key={item.id} itemOrder = {item} item={item.item} orderStatus = {item.order.checked_out} order = {item.order} removeItemFromCart = {removeItemFromCart}/>
         }) 
       
-        // console.log(itemArr[0]?.item.price)
        
     
         const totalCost = itemArr.reduce((a, b) => a + b.item.price, 0)
@@ -24,12 +24,13 @@ function Cart({ itemOrders, removeItemFromCart, checkOut}) {
     // onClick={checkOut} 
         return (
             <div>
+                 {!pay ? <>
                 <Container textAlign='center'>
                 <Header as='h1' color="grey">Cart</Header>
                 <Header as='h3' color="grey">Your cart total is:  ${roundedTotalCost}</Header>
                     <br></br>
                     <br></br>
-                <Button onClick={checkOut} animated>
+                <Button onClick={() => setPay(true)} animated>
                 <Button.Content visible>Check Out</Button.Content>
                 <Button.Content hidden>
                 <Icon name='check circle' />
@@ -41,6 +42,9 @@ function Cart({ itemOrders, removeItemFromCart, checkOut}) {
                     {itemList}
                 </Card.Group>
                 </Container>
+                </>
+                : <Payment checkout = {checkOut} />
+            }
             </div>
         )
     }else {
