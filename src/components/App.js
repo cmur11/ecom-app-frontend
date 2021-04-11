@@ -5,6 +5,8 @@ import LoginForm from "./LoginForm"
 import NavBar from "./NavBar"
 import Cart from './Cart'
 import '../App.css'
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
 
 
 function App() {

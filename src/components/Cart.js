@@ -4,6 +4,7 @@ import { Card, Button, Container, Icon, Header} from 'semantic-ui-react'
 import Payment from "./Payment.js"
 import { Elements, StripeProvider } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import CheckoutForm from "./CheckoutForm"
 
 
 function Cart({ itemOrders, removeItemFromCart, checkOut}) {
@@ -22,7 +23,7 @@ function Cart({ itemOrders, removeItemFromCart, checkOut}) {
         const totalCost = itemArr.reduce((a, b) => a + b.item.price, 0)
     
         const roundedTotalCost = (Math.round(totalCost * 100) / 100)
-        // const stripePromise = loadStripe('pk_test_51IaO1jGHXlKuOp6FfPCXYzUhqWF3xQAFL5WCdsfCM6wmwxUHhznNNXcUxqxs6OvYyUWiyHUyHlm0IV0OG1HQsHke00NnsUNTfD');
+        const stripePromise = loadStripe('pk_test_51IaO1jGHXlKuOp6FfPCXYzUhqWF3xQAFL5WCdsfCM6wmwxUHhznNNXcUxqxs6OvYyUWiyHUyHlm0IV0OG1HQsHke00NnsUNTfD');
 
     
     // onClick={checkOut} 
@@ -30,8 +31,8 @@ function Cart({ itemOrders, removeItemFromCart, checkOut}) {
             <div>
                  {!pay ? <>
                 <Container textAlign='center'>
-                <Header as='h1' color="grey">Cart</Header>
-                <Header as='h3' color="grey">Your cart total is:  ${roundedTotalCost}</Header>
+                <Header as='h1' >Cart</Header>
+                <Header as='h3' >Your cart total is:  ${roundedTotalCost}</Header>
                     <br></br>
                     <br></br>
                 <Button onClick={() => setPay(true)} animated>
@@ -48,15 +49,15 @@ function Cart({ itemOrders, removeItemFromCart, checkOut}) {
                 </Container>
                 </>
                 :
-                // stripe={stripePromise}
-                // <StripeProvider apiKey="pk_test_51IaO1jGHXlKuOp6FfPCXYzUhqWF3xQAFL5WCdsfCM6wmwxUHhznNNXcUxqxs6OvYyUWiyHUyHlm0IV0OG1HQsHke00NnsUNTfD">
-                    //  <Elements > 
-                    <>
-                    hi
-                {/* <Payment totalCost = {totalCost} itemArr ={itemArr} checkout = {checkOut}/> */}
+                
+              
+                <>
+                <Elements stripe = {stripePromise}> 
+                    <CheckoutForm totalCost={totalCost}/>
+               
+                </Elements>
                 </>
-                //   </Elements>
-                // </StripeProvider>
+               
             }
             </div>
         )

@@ -42,7 +42,7 @@ function ItemPage({addToCart, orderId}){
     return (
         <>
         <Container textAlign='center'>
-        <Header as='h1' color="grey" >Clothzilla</Header>
+        <Header as='h1'  >Clothzilla</Header>
         </Container>
                 <Categories category = {category} setCategory = {setCategory}/>
                 <ItemCollection items={categoriedItems} orderId={orderId} user = {user} addToCart = {addToCart}/>

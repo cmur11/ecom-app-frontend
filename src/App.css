@@ -1,4 +1,61 @@
-.card-img {
+/* .card-img {
   display: flex;
   justify-content: center;
+} */
+.ui.menu{
+  background-color: #525252 !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+}
+body{
+  background-color: #180877 !important;
+}
+.ui.container{
+
+  background-color: #525252;
+}
+/* #abcece */
+
+.ui.image {
+  border: black;
+  position: relative;
+  margin: auto;
+  display: block !important;
+  vertical-align: middle;
+  max-width: 50% !important;
+  /* background-color: #db2828; */
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+}
+
+a {
+  color: white !important;
+  font-weight: bold !important;
+}
+
+.ui.header {
+  color: white !important;
+}
+
+.ui.container.cart{
+  justify-content: center !important;
+}
+
+.ui.cards {
+  display: flex;
+  /* margin: auto; */
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ui.image {
+  max-width: 50% !important;
+}
+.login{
+  background-color: #180877 !important;
+}
+
+.login >form > input{
+  max-width:50% !important;
 }

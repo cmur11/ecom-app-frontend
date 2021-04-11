@@ -24,7 +24,7 @@ function LoginForm(){
 
     return (
       <div className="login">
-        <Header as='h1' color="grey">Sign In</Header>
+        <Header as='h1' >Sign In</Header>
         <form 
           onSubmit={handleSubmit}
           href="/home"

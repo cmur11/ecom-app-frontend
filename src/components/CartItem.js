@@ -4,7 +4,7 @@ import { Card, Button, Icon, Image } from 'semantic-ui-react'
 
 function CartItem({item,order,orderStatus, itemOrder, removeItemFromCart}){
    const [checkedOut, setCheckedOut] = useState(order.checked_out)
-test
+
     function handleCheckout(){
       // setCheckedOut(!checkedOut)
       console.log(order)
