@@ -18,27 +18,17 @@ function ItemPage({addToCart, orderId}){
         .then(setItems)
       }, [])
 
-// console.log(user)
+
       useEffect(()=> {
         fetch('http://localhost:3000/users')
         .then(res => res.json())
         .then(users => setUser(users[0]))
     }, [])
 
-    // useEffect(()=> {
-    //     fetch('http://localhost:3000/item_orders')
-    //     .then(res => res.json())
-    //     .then(itemOrders => setItemOrders(itemOrders))
-    // }, [])
- 
-    // console.log(itemOrders)
 
-    // function renderMainMenu(currentUser){
-    //     console.log(currentUser)
-    // }
 
     const categoriedItems = items.filter(item => item.category.includes(category))
-    console.log(categoriedItems)
+    // console.log(categoriedItems)
     return (
         <>
         <Container textAlign='center'>
@@ -46,7 +36,7 @@ function ItemPage({addToCart, orderId}){
         </Container>
                 <Categories category = {category} setCategory = {setCategory}/>
                 <ItemCollection items={categoriedItems} orderId={orderId} user = {user} addToCart = {addToCart}/>
-        {/* <Cart itemOrders={itemOrders} /> */}
+       
         </>
     )
 }

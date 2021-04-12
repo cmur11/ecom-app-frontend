@@ -6,13 +6,18 @@
   background-color: #525252 !important;
   font-size: 16px !important;
   font-weight: bold !important;
+  font-family: 'Kiwi Maru', serif !important; 
+  justify-content: center !important;
+  text-align: center !important;
+  /* display: inline-block !important; */
 }
 body{
   background-color: #180877 !important;
+  font-family: 'Kiwi Maru', serif !important;
 }
 .ui.container{
 
-  background-color: #525252;
+  background-color: white;
 }
 /* #abcece */
 
@@ -21,8 +26,9 @@ body{
   position: relative;
   margin: auto;
   display: block !important;
-  vertical-align: middle;
+  /* vertical-align: middle; */
   max-width: 50% !important;
+ 
   /* background-color: #db2828; */
   justify-content: center;
   text-align: center;
@@ -35,7 +41,9 @@ a {
 }
 
 .ui.header {
-  color: white !important;
+  color: #180877 !important;;
+   /* font-family: 'Dela Gothic One' !important; */
+   font-family: 'Kiwi Maru', serif !important; 
 }
 
 .ui.container.cart{
@@ -47,15 +55,47 @@ a {
   /* margin: auto; */
   justify-content: center;
   flex-wrap: wrap;
+  /* box-shadow: 0 1px 20px 0 #d4d4d5, 0 0 0 1px #d4d4d5; */
 }
 
 .ui.image {
   max-width: 50% !important;
 }
 .login{
-  background-color: #180877 !important;
+  /* background-color: #180877 !important; */
 }
 
 .login >form > input{
   max-width:50% !important;
+}
+div.header{
+  font-family: 'Kiwi Maru', serif !important; 
+}
+
+.ui.animated.button .visible.content{
+  font-family: 'Kiwi Maru', serif !important; 
+  color: #180877;
+}
+
+/* .ui.animated.button  */
+.ui.card, .ui.cards>.card {
+box-shadow: 0 1px 20px 0 #d4d4d5, 0 0 0 0px #d4d4d5 !important;
+}
+
+/* .css-18udynv { */
+
+  /* .css-sn4frj */ 
+  /* font of form */
+  /* left columns .css-116dl8q */
+
+  /* .css-cgmnfi {
+  background-color: red !important;
+} */
+
+h1.congrats{
+  color:white;
+}
+
+div.congrats{
+  text-align: center;
 }

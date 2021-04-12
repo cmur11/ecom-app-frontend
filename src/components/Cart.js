@@ -1,17 +1,16 @@
 import React, {useState} from 'react';
 import CartItem from './CartItem'
 import { Card, Button, Container, Icon, Header} from 'semantic-ui-react'
-import Payment from "./Payment.js"
-import { Elements, StripeProvider } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import CheckoutForm from "./CheckoutForm"
+import { Link } from "react-router-dom";
 
 
-function Cart({ itemOrders, removeItemFromCart, checkOut}) {
+
+
+function Cart({ setItemOrders,itemOrders, removeItemFromCart, checkOut}) {
     const [pay,setPay] = useState(false)
-    console.log(itemOrders)
+    
     if (itemOrders){
-        // if {}
+    
         const itemArr = itemOrders.filter((itemOrder) => itemOrder.order.checked_out === false)
 
         const itemList = itemArr.map((item) => {
@@ -19,25 +18,33 @@ function Cart({ itemOrders, removeItemFromCart, checkOut}) {
         }) 
       
        
-    // console.log(itemArr)
+    
         const totalCost = itemArr.reduce((a, b) => a + b.item.price, 0)
     
         const roundedTotalCost = (Math.round(totalCost * 100) / 100)
-        const stripePromise = loadStripe('pk_test_51IaO1jGHXlKuOp6FfPCXYzUhqWF3xQAFL5WCdsfCM6wmwxUHhznNNXcUxqxs6OvYyUWiyHUyHlm0IV0OG1HQsHke00NnsUNTfD');
+       
 
-    
-    // onClick={checkOut} 
-        return (
-            <div>
+        function handleCheckout(e){
+            setItemOrders([])
+            setPay(true)
+        }
+    // if(itemOrders.length === 0){
+    //     console.log("hi")
+    //   return  <Header as='h1' >Your Cart is empty</Header>
+    // }
+    return (
+
+        
+        <div>
                  {!pay ? <>
                 <Container textAlign='center'>
                 <Header as='h1' >Cart</Header>
                 <Header as='h3' >Your cart total is:  ${roundedTotalCost}</Header>
                     <br></br>
                     <br></br>
-                <Button onClick={() => setPay(true)} animated>
-                <Button.Content visible>Check Out</Button.Content>
-                <Button.Content hidden>
+                <Button onClick={(e) => handleCheckout(e)} animated>
+                    <Button.Content visible>Check Out</Button.Content>
+                    <Button.Content hidden>
                 <Icon name='check circle' />
                 </Button.Content>
                 </Button>
@@ -52,10 +59,20 @@ function Cart({ itemOrders, removeItemFromCart, checkOut}) {
                 
               
                 <>
-                <Elements stripe = {stripePromise}> 
+                    <div className ="congrats">
+                       <h1 className ="congrats">Order has been placed!</h1> 
+                       <Link to="/home">
+                       <Button>Continue Shopping?</Button>
+                       </Link>
+                       <br></br>
+                       <br></br>
+                      
+                    </div>
+
+                {/* <Elements stripe = {stripePromise}> 
                     <CheckoutForm totalCost={totalCost}/>
                
-                </Elements>
+                </Elements> */}
                 </>
                
             }

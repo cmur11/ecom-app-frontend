@@ -10,11 +10,17 @@ import {loadStripe} from '@stripe/stripe-js';
 
 
 function App() {
-
+  const [user, setUser] = useState([])
   const [orderId, setOrderId] = useState("")
   const [newArr, setNewArr] = useState([])
   const [itemOrders, setItemOrders] = useState([]); 
   
+  useEffect(() => {
+  fetch('http://localhost:3000/users')
+  .then(res => res.json())
+  .then(users => setUser(users[0]))
+  },[])
+
   function handleOrders(orders){
     // console.log(orders)
     if (!orders){
@@ -25,7 +31,7 @@ function App() {
       createNewOrder()
     }
   }
-  console.log(orderId)
+  console.log(user)
 
 
   useEffect(()=> {
@@ -100,15 +106,18 @@ function createNewOrder() {
 // console.log(orderId)
   return (
     <Router>
-      <NavBar />
+      <NavBar user = {user}/>
       
       <Switch>
-          <Route exact path="/login" component={LoginForm}/>
+        <Route exact path="/login">
+            <LoginForm user ={user} setUser={setUser}/>
+        </Route>
+          {/* <Route exact path="/login" component={LoginForm}/> */}
           <Route exact path="/home" >
             <ItemPage addToCart = {addToCart} orderId={orderId}/>
           </Route>
           <Route exact path="/carts" >
-            <Cart itemOrders={itemOrders} addToCart = {addToCart} removeItemFromCart = {removeItemFromCart}checkOut = {checkOut}  />
+            <Cart setItemOrders = {setItemOrders} itemOrders={itemOrders} addToCart = {addToCart} removeItemFromCart = {removeItemFromCart}checkOut = {checkOut}  />
           </Route>
       </Switch>
       </Router>

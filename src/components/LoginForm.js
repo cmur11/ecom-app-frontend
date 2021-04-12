@@ -4,11 +4,11 @@ import '../components/css/login.css';
 import { Header, Button, Icon } from 'semantic-ui-react'
 
 
-function LoginForm(){
+function LoginForm(user,setUser){
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [loggedIn, setLoggedIn] = useState(false)
-  const [user, setUser] = useState([])
+  // const [user, setUser] = useState([])
  
 
  

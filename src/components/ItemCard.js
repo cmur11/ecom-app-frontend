@@ -37,10 +37,10 @@ function handleAddToCart(){
             <br></br>
             <br></br>
             <Card.Header>{item.brand}</Card.Header>
+            <Card.Description>${item.price}</Card.Description>
             <br></br>
             <Card.Meta>{item.name}</Card.Meta>
             <br></br>
-            <Card.Description>${item.price}</Card.Description>
           </Card.Content>
           
           <Button onClick={handleAddToCart} animated>
