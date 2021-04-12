@@ -25,7 +25,7 @@ function ItemPage({addToCart, orderId}){
         .then(users => setUser(users[0]))
     }, [])
 
-
+    if (items[0]){
 
     const categoriedItems = items.filter(item => item.category.includes(category))
     // console.log(categoriedItems)
@@ -38,7 +38,10 @@ function ItemPage({addToCart, orderId}){
                 <ItemCollection items={categoriedItems} orderId={orderId} user = {user} addToCart = {addToCart}/>
        
         </>
-    )
+    )}
+    else{
+        return<div>Loading...</div>
+    }
 }
 export default ItemPage;
 

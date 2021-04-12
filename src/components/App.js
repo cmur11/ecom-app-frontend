@@ -31,7 +31,7 @@ function App() {
       createNewOrder()
     }
   }
-  console.log(user)
+  // console.log(user)
 
 
   useEffect(()=> {
@@ -54,7 +54,7 @@ function App() {
   function addToCart(newOrder){
     console.log(newOrder)
     const newArr = [...itemOrders,newOrder]
-    console.log(newArr)
+    // console.log(newArr)
      setItemOrders(newArr)
   }
 

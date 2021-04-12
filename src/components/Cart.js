@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import CartItem from './CartItem'
 import { Card, Button, Container, Icon, Header} from 'semantic-ui-react'
 import { Link } from "react-router-dom";
-
+import Checkout from "./Checkout"
 
 
 
@@ -17,15 +17,20 @@ function Cart({ setItemOrders,itemOrders, removeItemFromCart, checkOut}) {
             return <CartItem key={item.id} itemOrder = {item} item={item.item} orderStatus = {item.order.checked_out} order = {item.order} removeItemFromCart = {removeItemFromCart}/>
         }) 
       
-       
-    
+       console.log(itemArr)
+// debugger
+       const indItem = itemArr.map((item) =>{
+            return item.item.name 
+       })
+       console.log(indItem)
+
         const totalCost = itemArr.reduce((a, b) => a + b.item.price, 0)
     
         const roundedTotalCost = (Math.round(totalCost * 100) / 100)
        
 
         function handleCheckout(e){
-            setItemOrders([])
+            // setItemOrders([])
             setPay(true)
         }
     // if(itemOrders.length === 0){
@@ -59,7 +64,7 @@ function Cart({ setItemOrders,itemOrders, removeItemFromCart, checkOut}) {
                 
               
                 <>
-                    <div className ="congrats">
+                    {/* <div className ="congrats">
                        <h1 className ="congrats">Order has been placed!</h1> 
                        <Link to="/home">
                        <Button>Continue Shopping?</Button>
@@ -67,7 +72,8 @@ function Cart({ setItemOrders,itemOrders, removeItemFromCart, checkOut}) {
                        <br></br>
                        <br></br>
                       
-                    </div>
+                    </div> */}
+                    <Checkout roundedTotalCost = {roundedTotalCost} indItem = {indItem}/>
 
                 {/* <Elements stripe = {stripePromise}> 
                     <CheckoutForm totalCost={totalCost}/>
@@ -81,7 +87,10 @@ function Cart({ setItemOrders,itemOrders, removeItemFromCart, checkOut}) {
     }else {
         return(
             <div>
-                Loading...
+                <h1> Loading...</h1>
+                {/* <Link to="/home">
+                       <Button>Continue Shopping?</Button>
+                </Link> */}
             </div>
         )
     }
