@@ -14,7 +14,7 @@ Username: cm11 <br />
 Password: 123 <br />
 
 
-[Back End](https://github.com/cmur11/apartmentreview_backend)
+[Back End](https://github.com/cmur11/ecom_app_backend_api)
 
 To use, fork and clonethis repository, & start api server and run:
 
