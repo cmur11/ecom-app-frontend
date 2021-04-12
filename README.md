@@ -20,7 +20,7 @@ To use, fork and clonethis repository, & start api server and run:
 
 -npm install && npm start
 
-###**Features**<br />
+### **Features**<br />
 Browse clothing by product type<br />
 Add and remove items to cart<br />
 Payment Processing with Stripe<br />
