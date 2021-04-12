@@ -25,3 +25,5 @@ Browse clothing by product type<br />
 Add and remove items to cart<br />
 Payment Processing with Stripe<br />
 
+![](Stripe1.gif)
+
